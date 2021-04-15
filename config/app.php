@@ -82,6 +82,14 @@ return [
 
     'locale' => 'en',
 
+    // Added new language
+    'locales' => [
+        'en' => 'English',
+        'ig' => 'Igbo',
+        'ha' => 'Hausa',
+        'fr' => 'French',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
