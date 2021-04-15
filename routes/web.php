@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'FrontendController@index')->name('index');
+// Route::get('/', 'FrontendController@index')->name('index');
 
 Auth::routes();
 

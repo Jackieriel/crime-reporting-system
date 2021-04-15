@@ -21,6 +21,12 @@
 </head>
 <body>
     <div id="app">
+        <div class="languages">
+            @foreach(config()->get('app.locales') as $code => $lang)
+                <a href="http://{{$code}}.laravel.test">{{ $lang }}</a>
+            @endforeach
+        </div>
+        
         <main class="py-4">
             @yield('content')
         </main>
