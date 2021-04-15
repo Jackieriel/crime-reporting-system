@@ -5,8 +5,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            {{-- <h2 class="text-center p-3 font-weight-bold text-white">TessCRSystem</h2> --}}
             <div class="card">
-                <div class="card-header text-center text-uppercase">{{ __('Login') }}</div>
+                <div class="card-header text-center text-uppercase"><i class="fa fa-user"></i>  {{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -71,7 +72,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="card">
+                <div class="card p-1">
                     <span class="text-center">
                         Don't have an account? <a href="{{route('register')}}">Signup/Register</a>
                     </span>
