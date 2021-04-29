@@ -19,7 +19,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->text('status')->default('pulished');
+            $table->string('status')->default('published');
 
             $table->timestamps();
         });

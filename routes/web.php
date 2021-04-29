@@ -34,12 +34,16 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => ['auth', 'securityAgency']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
+    Route::resource('announcement', 'AnnouncementController');
+    Route::resource('agency', 'AgencyController');
 });
 
 
 Route::group(['middleware' => ['auth', 'superAdmin']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
+    Route::resource('announcement', 'AnnouncementController');
+    Route::resource('agency', 'AgencyController');
 });
 
 Route::group(['middleware' => ['auth', 'otherAgency']], function () {

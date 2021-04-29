@@ -45,6 +45,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Incident', 'reporter_id');
     }
 
+
+        // user has many Agent
+        public function agency()
+        {
+            return $this->hasMany('App\Models\Agency', 'agent_id');
+        }
+
+        
     // user has many comments
     public function feedbacks()
     {
