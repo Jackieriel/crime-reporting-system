@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CrimeCategory extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['category_name'];
 
     public function incidents()
     {

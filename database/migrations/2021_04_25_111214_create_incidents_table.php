@@ -28,7 +28,9 @@ class CreateIncidentsTable extends Migration
             $table->text('description');
             $table->string('photo')->nullable();
             $table->string('video')->nullable();
-            $table->string('status')->default('pending');
+
+            $table->enum('status',['pending verification','verified - investigation openned','verified - investigation closed'])->default('pending verification');
+
             $table->string('progress_remark')->default('waiting verification');
 
             $table->timestamps();

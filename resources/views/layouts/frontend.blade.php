@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body class="front-bg">
     <div id="app">
@@ -83,5 +85,9 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+
+    <x-notifications />
 </body>
 </html>

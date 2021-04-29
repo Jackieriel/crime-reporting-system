@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CrimeCategory;
 use Illuminate\Http\Request;
+use App\Models\Incident;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class CrimeCategoryController extends Controller
 {
@@ -14,7 +17,9 @@ class CrimeCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = CrimeCategory::all();
+
+        return view('pages.admin.category.index')->with('categories', $categories);
     }
 
     /**
@@ -24,7 +29,7 @@ class CrimeCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.category.create');
     }
 
     /**
@@ -35,7 +40,27 @@ class CrimeCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // Assign variable for request
+        $r = request();
+
+        // Validate request
+        $this->validate($r, [
+            'category_name' => 'required',
+        ]);
+
+
+        // Store request
+        $category = CrimeCategory::create([
+            'category_name' => $r->category_name,
+
+        ]);
+
+        // flash message to session
+        Session::flash('success', 'Crime Category created successfully!');
+
+        // Redirect on success
+        return redirect()->route('crime-category.index');
     }
 
     /**
@@ -55,9 +80,11 @@ class CrimeCategoryController extends Controller
      * @param  \App\Models\CrimeCategory  $crimeCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(CrimeCategory $crimeCategory)
+    public function edit($id)
     {
-        //
+        $category = CrimeCategory::findOrFail($id);
+
+        return view('pages.admin.category.edit')->with('category', $category);
     }
 
     /**
@@ -67,9 +94,17 @@ class CrimeCategoryController extends Controller
      * @param  \App\Models\CrimeCategory  $crimeCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CrimeCategory $crimeCategory)
+    public function update(Request $request, $id)
     {
-        //
+        $category = CrimeCategory::findOrFail($id);
+
+        $category->category_name = $request->category_name;
+
+        $category->save();
+
+        Session::flash('success', 'Crime category updated successfully!');
+
+        return redirect()->route('crime-category.index');
     }
 
     /**
@@ -78,8 +113,20 @@ class CrimeCategoryController extends Controller
      * @param  \App\Models\CrimeCategory  $crimeCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CrimeCategory $crimeCategory)
+    public function destroy($id)
     {
-        //
+        $category = CrimeCategory::findOrFail($id);
+
+        foreach ($category->incidents as $incident) {
+            $incident->forceDelete();
+        }
+
+        $category->delete();
+
+        // flash message to session
+        Session::flash('success', 'Category deleted successfully!');
+
+        // Redirect on success
+        return redirect()->route('crime-category.index');
     }
 }

@@ -60,6 +60,15 @@ class User extends Authenticatable
         return false;
     }
 
+    public function is_reporter()
+    {
+        $role = $this->role;
+        if ($role == 'reporter') {
+            return true;
+        }
+        return false;
+    }
+
     public function is_super_admin()
     {
         $role = $this->role;

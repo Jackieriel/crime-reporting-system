@@ -21,6 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -75,9 +77,35 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        {{-- <main class="py-4">
             @yield('content')
-        </main>
+        </main> --}}
+
+        <div class="container py-4">
+            <div class="row">
+                {{-- @if (Auth::check() && Auth::user()->role) --}}
+                    
+                    <div class="col-md-8">
+                        @yield('content')
+                    </div>
+
+                    <div class="col-md-4">
+                        <x-sidebar />
+                    </div>
+                {{-- @else
+                    <div class="col-md-12">
+                        @yield('content')
+                    </div>
+                @endif --}}
+
+
+            </div>
+        </div>
     </div>
+
+    <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+
+    <x-notifications />
 </body>
 </html>

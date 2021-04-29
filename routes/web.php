@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,31 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'FrontendController@index')->name('index');
+
 // Route::get('/', 'FrontendController@index')->name('index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'FrontendController@dashboard')->name('dashboard');
+    Route::resource('incident', 'IncidentController');
+});
+
+
+Route::group(['middleware' => ['auth', 'securityAgency']], function () {
+    Route::resource('crime-category', 'CrimeCategoryController');
+    Route::resource('feedback', 'FeedbackController');
+});
+
+
+Route::group(['middleware' => ['auth', 'superAdmin']], function () {
+    Route::resource('crime-category', 'CrimeCategoryController');
+    Route::resource('feedback', 'FeedbackController');
+});
+
+Route::group(['middleware' => ['auth', 'otherAgency']], function () {
+//
+});
+
+Auth::routes();
