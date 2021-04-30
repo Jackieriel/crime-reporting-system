@@ -25,9 +25,9 @@
                             TOTAL CRIME CATEGORIES
                         </div>
                         {{-- <a href="{{ route('category.index') }}"> --}}
-                            <div class="card card-body">
-                                <h1>{{ $category_count }}</h1>
-                            </div>
+                        <div class="card card-body">
+                            <h1>{{ $category_count }}</h1>
+                        </div>
                         {{-- </a> --}}
                     </div>
 
@@ -36,22 +36,22 @@
                             Total Crimes Reported
                         </div>
                         {{-- <a href="{{ route('product.index') }}"> --}}
-                            <div class="card card-body">
-                                <h1>{{ $total_reported_case }}</h1>
-                            </div>
+                        <div class="card card-body">
+                            <h1>{{ $total_reported_case }}</h1>
+                        </div>
                         {{-- </a> --}}
                     </div>
 
-                    
+
 
                     <div class="col-md-3 card card-header  text-center">
                         <div class="card card-heading bg-primary text-white text-uppercase">
                             Total Open Invistigation
                         </div>
                         {{-- <a href="{{ route('staff.index') }}"> --}}
-                            <div class="card card-body">
-                                <h1>{{ $total_case_open }}</h1>
-                            </div>
+                        <div class="card card-body">
+                            <h1>{{ $total_case_open }}</h1>
+                        </div>
                         {{-- </a> --}}
                     </div>
 
@@ -60,9 +60,9 @@
                             Total Closed Invistigation
                         </div>
                         {{-- <a href="{{ route('staff.index') }}"> --}}
-                            <div class="card card-body">
-                                <h1>{{ $total_case_close }}</h1>
-                            </div>
+                        <div class="card card-body">
+                            <h1>{{ $total_case_close }}</h1>
+                        </div>
                         {{-- </a> --}}
                     </div>
                 </div>
@@ -70,6 +70,7 @@
         @endif
 
     </div>
+
 
 @endsection
 

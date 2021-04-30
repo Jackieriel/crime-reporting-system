@@ -1,12 +1,302 @@
-.front-bg{
+.front-bg {
     /* background-image: url(../images/crime.jpg); */
     /* background-size: cover; */
     /* height: 100vh; */
     background: #062863;
     /* opacity: 0.3; */
-    
 }
 /* 
 .front-bg img{
       opacity: 0.3;
 } */
+
+/* navbar */
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.js-header {
+    border-bottom: 1px solid #e2e8f0;
+
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background: #fff;
+}
+
+.navbar-space {
+    /* padding: 16px; */
+    margin-top: 5rem;
+}
+
+.js-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.js-hamburger {
+    display: none;
+}
+
+.js-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.js-nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.js-nav-item {
+    margin-left: 1.5rem;
+}
+
+.js-nav-link {
+    /* font-size: 1.6rem; */
+    font-weight: 400;
+    color: #475569;
+}
+
+.js-nav-link:hover {
+    color: #482ff7;
+}
+
+.js-nav-logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #482ff7;
+}
+
+@media only screen and (max-width: 768px) {
+    .js-nav-menu {
+        position: fixed;
+        left: -100%;
+        z-index: 1;
+        top: 4.5rem;
+        /* top: 5rem; */
+        flex-direction: column;
+        /* background-color: rgb(184, 180, 126); */
+        background-color: #fff;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+
+        height: 90vh;
+
+        display: block;
+        text-align: left;
+        width: 68%;
+        padding: 0px;
+    }
+
+    .js-nav-menu.active {
+        left: 0;
+    }
+
+    .js-nav-item {
+        margin: 0;
+        /* margin: 2.5rem 0; */
+        /* width: 50%;   */
+
+        background: #ffffff;
+        padding: 0.5rem 1.5rem;
+
+        box-sizing: border-box;
+        box-shadow: inset -2px -2px 5px #f4f7f8, inset 2px 2px 5px #e2e6e9;
+        transition: 0.4s;
+    }
+
+    .js-nav-item:hover {
+        padding-left: 50px;
+    }
+
+    .js-hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .js-hamburger.active .js-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .js-hamburger.active .js-bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .js-hamburger.active .js-bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .show-menu {
+        /* visibility: visible; */
+        display: block !important;
+    }
+}
+
+.show-menu {
+    /* visibility: hidden; */
+    display: none;
+}
+/* end navbar */
+
+/*dropdown*/
+.js-dropbtn {
+    display: inline-block;
+    /*color: white;*/
+    text-align: center;
+    /* padding: 14px 16px; */
+    text-decoration: none;
+}
+
+li.js-dropdown {
+    display: inline-block;
+}
+
+.js-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.js-dropdown-content a {
+    /*color: black;*/
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.js-dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+.online {
+    background: green;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* .show-menu {
+    visibility: hidden;
+} */
+
+/* Table */
+
+/*.js-table*/
+
+.js-table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.js-table .js-caption {
+    font-size: 1.5em;
+    margin: 0.5em 0 0.75em;
+}
+
+.js-table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    /* padding: .35em; */
+}
+
+.js-table th,
+.js-table td {
+    padding: 0.625em 0;
+    text-align: center;
+}
+
+.js-table th {
+    font-size: 0.85em;
+    /* letter-spacing: .1em; */
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    .js-table {
+        border: 0;
+    }
+
+    .js-table .js-caption {
+        font-size: 1.3em;
+    }
+
+    .js-table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .js-table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    .js-table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+    }
+
+    .js-table td::before {
+        /*
+    * aria-label has no advantage, it won't be read inside a .js-table
+    content: attr(aria-label);
+    */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .js-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .js-table th,
+    .js-table td {
+        padding: 0.625em;
+      
+    }
+}
+
+.action .btn {
+    display: inline;
+}

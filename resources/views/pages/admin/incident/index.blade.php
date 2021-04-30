@@ -11,36 +11,40 @@
 
             <div class="card-header text-center">Reported Crime incident</div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="js-table">
                     <thead>
-                        <th>Reporter</th>
-                        <th>Category</th>
-                        <th>Reported Date</th>
-                        @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
-                            <th>Details</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                        <tr>
+                            <th scope="col">Reporter</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Reported Date</th>
+                            @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
+                                <th colspan="2">Action</th>
+                                {{-- <th>Edit</th>
+                                <th>Delete</th> --}}
 
-                        @elseif(Auth::check() && Auth::user()->is_other_agency())
-                            <th>Details</th>
-                        @endif
+                            @elseif(Auth::check() && Auth::user()->is_other_agency())
+                                <th scope="col">Details</th>
+                            @endif
+                        </tr>
                     </thead>
                     <tbody>
                         @if ($incidents->count() > 0)
 
                             @foreach ($incidents as $incident)
                                 <tr>
-                                    <td>{{ $incident->reporter->name }}</td>
-                                    <td class="text-capitalize">{{ $incident->crimecategory->category_name }}</td>
+                                    <td scope="row" data-label="Reporter">{{ $incident->reporter->name }}</td>
+                                    <td class="text-capitalize" scope="row" data-label="Crime Category">{{ $incident->crimecategory->category_name }}</td>
                                     {{-- <td>{!! Str::substr($incident->description, 0, 20) !!}</td> --}}
-                                    <td>{{ $incident->created_at->format('M d,Y \a\t h:i a') }}</td>
+                                    <td scope="row" data-label="Date Reported">{{ $incident->created_at->format('M d,Y \a\t h:i a') }}</td>
                                     {{-- <td>{{ $incident->created_at->toFormattedDateString() }}</td> --}}
 
                                     @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
-                                        <td><a href="{{ route('incident.show', $incident->id) }}"
+                                        <td>
+                                            <a href="{{ route('incident.show', $incident->id) }}"
                                                 class="btn btn-xs btn-primary">View</a>
                                         </td>
-                                        <td><a href="{{ route('incident.edit', $incident->id) }}"
+                                        <td>
+                                            <a href="{{ route('incident.edit', $incident->id) }}"
                                                 class="btn btn-xs btn-primary">Edit</a>
                                         </td>
                                         <td>

@@ -11,18 +11,18 @@
 
             <div class="card-header text-center">Crime category</div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="js-table">
                     <thead>
-                        <th>name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th scope="col">Crime Category</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </thead>
                     <tbody>
                         @if ($categories->count() > 0)
 
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->category_name }}</td>
+                                    <td scope="row" data-label="Category">{{ $category->category_name }}</td>
 
                                     <td><a href="{{ route('crime-category.edit', $category->id) }}"
                                             class="btn btn-xs btn-primary">Edit</a>

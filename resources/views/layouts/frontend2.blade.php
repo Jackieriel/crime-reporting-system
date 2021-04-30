@@ -30,7 +30,7 @@
     <div id="app">
         {{-- Customer navbar --}}
         <div class="js-header">
-            <x-admin-nav />
+            <x-user-nav />
         </div>
 
 
@@ -42,11 +42,11 @@
             <div class="row">
                 {{-- @if (Auth::check() && Auth::user()->role) --}}
 
-                <div class="col-md-9">
+                <div class="col-md-8">
                     @yield('content')
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <x-sidebar />
                 </div>
                 {{-- @else

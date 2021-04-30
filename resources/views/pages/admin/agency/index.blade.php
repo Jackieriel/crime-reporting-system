@@ -11,21 +11,21 @@
 
             <div class="card-header text-center">Create Agency Profile</div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="js-table">
                     <thead>
                         @if (Auth::check() && (Auth::user()->is_super_admin() || Auth::user()->is_other_agency()))
-                            <th>Agent Name</th>
-                            <th>Agency</th>
-                            <th>Phone</th>
-                            <th>Details</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th scope="col">Agent Name</th>
+                            <th scope="col">Agency</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
 
                         @elseif (Auth::check() && Auth::user()->is_security_agency())
-                            <th>Agent Name</th>
-                            <th>Agency</th>
-                            <th>Phone</th>
-                            <th>Details</th>
+                            <th scope="col">Agent Name</th>
+                            <th scope="col">Agency</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Details</th>
                         @endif
                     </thead>
                     <tbody>
@@ -33,11 +33,11 @@
 
                             @foreach ($agencies as $agency)
                                 <tr>
-                                    <td>
+                                    <td data-label="Agent Name" scope="row">
                                         {{ $agency->agent->name }}
                                     </td>
-                                    <td class="text-capitalize">{{ $agency->agency_name }}</td>
-                                    <td class="text-capitalize">{{ $agency->phone }}</td>
+                                    <td class="text-capitalize" data-label="Agency Name">{{ $agency->agency_name }}</td>
+                                    <td class="text-capitalize" data-label="Phone">{{ $agency->phone }}</td>
 
 
                                     @if (Auth::check() && (Auth::user()->is_super_admin() || Auth::user()->is_other_agency()))

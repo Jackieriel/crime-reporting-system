@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend2')
 
 @section('content')
     <div class="container">
@@ -13,7 +13,6 @@
                 @endif
 
                 You are logged in!
-                <h1>This is user dashboard</h1>
             </div>
         </div>
     </div>

@@ -11,14 +11,14 @@
 
             <div class="card-header text-center">Post announcement</div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="js-table">
                     <thead>
                         @if (Auth::check() && (Auth::user()->is_super_admin() || Auth::user()->is_security_agency()))
-                            <th>Title</th>
-                            <th>Updated</th>
-                            <th>Details</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Updated</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         @endif
                     </thead>
                     <tbody>
@@ -26,8 +26,8 @@
 
                             @foreach ($announcements as $announcement)
                                 <tr>
-                                    <td class="text-capitalize">{!! Str::substr($announcement->title, 0, 30) !!}</td>
-                                    <td class="text-capitalize">{{ $announcement->created_at->format('M d,Y') }}</td>
+                                    <td class="text-capitalize" data-label="Title">{!! Str::substr($announcement->title, 0, 30) !!}</td>
+                                    <td class="text-capitalize" data-label="Posted">{{ $announcement->created_at->format('M d,Y') }}</td>
 
 
                                     @if (Auth::check() && (Auth::user()->is_super_admin() || Auth::user()->is_security_agency()))
