@@ -20,7 +20,7 @@
             <li class="js-nav-item ">
                 <span>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
 
                     </a>
@@ -31,10 +31,25 @@
             </li>
 
             <li class="js-nav-item show-menu">
-                <a href="{{ route('incident.index') }}" class="js-nav-link">Incidents</a>
+                <a href="{{ route('dashboard') }}" class="js-nav-link">Home</a>
+            </li>
+            <li class="js-nav-item show-menu">
+                <a href="{{ route('report') }}" class="js-nav-link">Report Incident</a>
+            </li>
+            <li class="js-nav-item show-menu">
+                <a href="{{ route('report.cases') }}" class="js-nav-link">My Reported Cases</a>
+            </li>
+            <li class="js-nav-item show-menu">
+                <a href="{{ route('user.stat') }}" class="js-nav-link">My Report Statistics</a>
+            </li>
+            <li class="js-nav-item show-menu">
+                <a href="{{ route('user.profile', Auth::user()->id) }}" class="js-nav-link">Manage Profile</a>
             </li>
 
         @endguest
+        <li class="js-nav-item show-menu">
+            <a href="{{ route('news') }}" class="js-nav-link">News/Info</a>
+        </li>
 
     </ul>
     <div class="js-hamburger">

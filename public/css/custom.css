@@ -123,7 +123,10 @@ a {
     }
 
     .js-nav-item:hover {
-        padding-left: 50px;
+        /* padding-left: 50px; */
+        /* padding-left: 2px; */
+        color: #482ff7;
+        
     }
 
     .js-hamburger {
@@ -231,7 +234,7 @@ li.js-dropdown {
 }
 
 .js-table th {
-    padding: 0.625em 1.0em;
+    padding: 0.625em 1em;
     text-align: center;
 }
 
@@ -297,8 +300,9 @@ li.js-dropdown {
     .js-table th,
     .js-table td {
         padding: 0.625em;
-      
     }
+
+   
 }
 
 .action .btn {
