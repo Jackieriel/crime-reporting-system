@@ -20,7 +20,7 @@
             <li class="js-nav-item ">
                 <span>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                                                    document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
 
                     </a>
@@ -54,6 +54,13 @@
 
                 <li class="js-nav-item show-menu">
                     <a href="{{ route('agency.index') }}" class="js-nav-link">{{ __('Agency') }}</a>
+                </li>
+            @endif
+
+
+            @if (Auth::check() && Auth::user()->is_super_admin())
+                <li class="js-nav-item show-menu">
+                    <a href="{{ route('users') }}" class="js-nav-link">{{ __('Manage users') }}</a>
                 </li>
             @endif
 

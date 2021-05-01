@@ -28,6 +28,12 @@
                 </li>
             @endif
 
+            @if (Auth::check() &&  Auth::user()->is_super_admin())
+                <li class="list-group-item">
+                    <a href="{{ route('users') }}">Manage Users</a>
+                </li>
+            @endif
+
         </ul>
 
     </div>
