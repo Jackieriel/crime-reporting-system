@@ -1,5 +1,10 @@
 @extends('layouts.frontend2')
 
+@section('title')
+    {{ $title }}
+@endsection
+
+
 @section('content')
     <div class="container">
         <div class="card">
@@ -13,56 +18,56 @@
                 @endif
 
                 @if (Auth::check())
-            <div class="card">
-                <div class="row m-0">
-                    <div class="col-md-3 card card-header  text-center">
-                        <div class="card card-heading bg-primary text-white text-uppercase">
-                            TOTAL CRIME CATEGORIES
+                    <div class="card">
+                        <div class="row m-0">
+                            <div class="col-md-3 card card-header  text-center">
+                                <div class="card card-heading bg-primary text-white text-uppercase">
+                                    Total Crimes Reported
+                                </div>
+                                
+                                <div class="card card-body">
+                                    <h1>{{ $total_reported_case }}</h1>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-md-3 card card-header  text-center">
+                                <div class="card card-heading bg-primary text-white text-uppercase">
+                                    Total Pending Verification
+                                </div>
+                                
+                                <div class="card card-body">
+                                    <h1>{{ $total_case_pending }}</h1>
+                                </div>
+                                
+                            </div>
+
+
+
+                            <div class="col-md-3 card card-header  text-center">
+                                <div class="card card-heading bg-primary text-white text-uppercase">
+                                    Total Open Invistigation
+                                </div>
+
+                                <div class="card card-body">
+                                    <h1>{{ $total_case_open }}</h1>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3 card card-header  text-center">
+                                <div class="card card-heading bg-primary text-white text-uppercase">
+                                    Total Closed Invistigation
+                                </div>
+
+                                <div class="card card-body">
+                                    <h1>{{ $total_case_close }}</h1>
+                                </div>
+
+                            </div>
                         </div>
-                        {{-- <a href="{{ route('category.index') }}"> --}}
-                        <div class="card card-body">
-                            {{-- <h1>{{ $category_count }}</h1> --}}
-                        </div>
-                        {{-- </a> --}}
                     </div>
-
-                    <div class="col-md-3 card card-header  text-center">
-                        <div class="card card-heading bg-primary text-white text-uppercase">
-                            Total Crimes Reported
-                        </div>
-                        {{-- <a href="{{ route('product.index') }}"> --}}
-                        <div class="card card-body">
-                            {{-- <h1>{{ $total_reported_case }}</h1> --}}
-                        </div>
-                        {{-- </a> --}}
-                    </div>
-
-
-
-                    <div class="col-md-3 card card-header  text-center">
-                        <div class="card card-heading bg-primary text-white text-uppercase">
-                            Total Open Invistigation
-                        </div>
-                        {{-- <a href="{{ route('staff.index') }}"> --}}
-                        <div class="card card-body">
-                            {{-- <h1>{{ $total_case_open }}</h1> --}}
-                        </div>
-                        {{-- </a> --}}
-                    </div>
-
-                    <div class="col-md-3 card card-header  text-center">
-                        <div class="card card-heading bg-primary text-white text-uppercase">
-                            Total Closed Invistigation
-                        </div>
-                        {{-- <a href="{{ route('staff.index') }}"> --}}
-                        <div class="card card-body">
-                            {{-- <h1>{{ $total_case_close }}</h1> --}}
-                        </div>
-                        {{-- </a> --}}
-                    </div>
-                </div>
-            </div>
-        @endif
+                @endif
             </div>
         </div>
     </div>

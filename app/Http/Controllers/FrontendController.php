@@ -175,7 +175,13 @@ class FrontendController extends Controller
     public function userStat()
     {
 
+        $title = 'Statistics';
 
-        return view('pages.frontend.user-stat');
+        return view('pages.frontend.user-stat')
+            ->with('title', $title)
+            ->with('total_reported_case', Incident::where('reporter_id', Auth::user()->id)->count())
+            ->with('total_case_open', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation openned')->count())
+            ->with('total_case_close', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation closed')->count())
+            ->with('total_case_pending', Incident::where('reporter_id', Auth::user()->id)->where('status', 'pending verification')->count());
     }
 }
