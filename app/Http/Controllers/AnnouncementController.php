@@ -84,7 +84,7 @@ class AnnouncementController extends Controller
             Session::flash('info', 'requested page not found!');
 
             // Redirect on success
-            return redirect()->route('agency.index');
+            return redirect()->route('announcement.index');
         }
 
         $title = 'Announcement';

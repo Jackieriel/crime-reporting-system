@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use App\Models\CrimeCategory;
 use App\Models\Incident;
 use App\User;
@@ -23,13 +24,29 @@ class FrontendController extends Controller
 
     public function dashboard()
     {
+        $title = 'Dashboard';
+
+
+        return view('pages.frontend.dashboard')
+            ->with('title', $title)
+            ->with('total_reported_case', Incident::where('reporter_id', Auth::user()->id)->count())
+            ->with('total_case_open', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation openned')->count())
+            ->with('total_case_close', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation closed')->count())
+            ->with('total_case_pending', Incident::where('reporter_id', Auth::user()->id)->where('status', 'pending verification')->count());
+    }
+
+
+    // Render form for user to report
+    public function reportCase()
+    {
         $title = 'Report Incident';
         $categories = CrimeCategory::all();
 
-        return view('pages.frontend.dashboard')
+        return view('pages.frontend.report')
             ->with('categories', $categories)
             ->with('title', $title);
     }
+
 
 
     // User Report case
@@ -183,5 +200,103 @@ class FrontendController extends Controller
             ->with('total_case_open', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation openned')->count())
             ->with('total_case_close', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation closed')->count())
             ->with('total_case_pending', Incident::where('reporter_id', Auth::user()->id)->where('status', 'pending verification')->count());
+    }
+
+
+
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        $title = 'Update Profile';
+
+        return view('pages.frontend.user-profile')
+            ->with('user', $user)
+            ->with('title', $title);
+    }
+
+    public function editProfile($id)
+    {
+        $user = User::findOrFail($id);
+
+        $title = 'Update Profile';
+
+        return view('pages.frontend.edit-profile')
+            ->with('user', $user)
+            ->with('title', $title);
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        // Validate data pass
+        $this->validate($request, [
+            'name' => 'required',
+            'gender' => 'required',
+            'phone' => 'required|min:11',
+            'email' => 'required|email',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif| sometimes',
+        ]);
+
+        $profile = User::findOrFail($id);
+
+        // Photo preparing
+        if ($request->hasFile('photo')) {
+            $photo = $request->photo;
+
+            $photo_new_name = time() . $photo->getClientOriginalName();
+
+            $photo->move('uploads/profile/', $photo_new_name);
+
+            $profile->photo = 'uploads/profile/' . $photo_new_name;
+        }
+
+        $profile->name = $request->name;
+        $profile->gender = $request->gender;
+        $profile->phone = $request->phone;
+        $profile->email = $request->email;
+
+
+
+        // Save post
+        $profile->save();
+
+        // flash message to session
+        Session::flash('success', 'Profile Updated Successfully!');
+
+        // Redirect on success
+        return redirect()->route('user.profile', Auth::user()->id);
+    }
+
+    // News
+
+    public function news()
+    {
+         //fetch 5 incidents from database which are active and latest
+         $announcements = Announcement::orderBy('created_at', 'desc')->paginate(10);
+
+         $title = 'News/Announcement';
+ 
+         return view('pages.frontend.news')
+             ->with('announcements', $announcements)
+             ->with('title', $title);
+    }
+
+    public function singleNews($id)
+    {
+        $announcement = Announcement::where('id', $id)->first();
+        if (!$announcement) {
+            // flash message to session
+            Session::flash('info', 'requested page not found!');
+
+            // Redirect on success
+            return redirect()->route('news');
+        }
+
+        $title = 'Announcement';
+
+
+        return view('pages.frontend.single-news')
+            ->with('announcement', $announcement)
+            ->with('title', $title);
     }
 }

@@ -84,7 +84,7 @@ class IncidentController extends Controller
             'lga' => 'required',
             'address' => 'required',
             'description' => 'required',
-            'photo' => 'image |  | mimes:jpeg,png,jpg,gif| sometimes',
+            'photo' => 'image | mimes:jpeg,png,jpg,gif| sometimes',
             'video' => 'video | sometimes',
 
         ]);

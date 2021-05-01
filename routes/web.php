@@ -28,6 +28,7 @@ Route::get('/', 'FrontendController@index')->name('index');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'FrontendController@dashboard')->name('dashboard');
+    Route::get('/report', 'FrontendController@reportCase')->name('report');
     
 
     Route::post('report', 'FrontendController@report')->name('report.store');
@@ -37,7 +38,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/my-stat', 'FrontendController@userStat')->name('user.stat');
 
-    Route::get('/user/edit/{id}', 'UserController@userRole')->name('user.edit');
+    Route::get('/profile/edit/{id}', 'FrontendController@editProfile')->name('profile.edit');
+    Route::post('/profile/update/{id}', 'FrontendController@updateProfile')->name('profile.update');
+    
+    Route::get('/profile/{id}', 'FrontendController@Profile')->name('user.profile');
+
+    Route::get('/news',  'FrontendController@news')->name('news');
+    Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 });
 
 

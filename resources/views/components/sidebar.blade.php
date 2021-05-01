@@ -10,7 +10,7 @@
             {{-- Reporter Links --}}
             @if (Auth::check() && Auth::user()->is_reporter())
                 <li class="list-group-item">
-                    <a href="{{ route('dashboard') }}">Report Incident</a>
+                    <a href="{{ route('report') }}">Report Incident</a>
                 </li>
 
                 <li class="list-group-item">
@@ -22,10 +22,14 @@
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{ route('home') }}">Manage Profile</a>
+                    <a href="{{ route('user.profile', Auth::user()->id) }}">Manage Profile</a>
                 </li>
 
             @endif
+            
+            <li class="list-group-item">
+                <a href="{{ route('news') }}">News/Info</a>
+            </li>
 
              {{-- End reporter link --}}
 

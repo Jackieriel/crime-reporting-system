@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
 
             $table->string('gender');
             $table->string('phone');
-            $table->string('photo')->nullable();
+            $table->string('photo')->nullable()->default('uploads/profile/avater.jpg');
             $table->string('status')->nullable()->default('active');
             $table->enum('role',['superAdmin','securityAgency','otherAgency','reporter'])->default('reporter');
 
