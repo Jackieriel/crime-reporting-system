@@ -10,11 +10,15 @@
             {{-- Reporter Links --}}
             @if (Auth::check() && Auth::user()->is_reporter())
                 <li class="list-group-item">
-                    <a href="{{ route('home') }}">Report Incident</a>
+                    <a href="{{ route('dashboard') }}">Report Incident</a>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="{{ route('home') }}">My Reported Cases</a>
+                    <a href="{{ route('report.cases') }}">My Reported Cases</a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="{{ route('user.stat') }}">Report Statistics</a>
                 </li>
 
                 <li class="list-group-item">

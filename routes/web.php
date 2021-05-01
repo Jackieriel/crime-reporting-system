@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,14 @@ Route::get('/', 'FrontendController@index')->name('index');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'FrontendController@dashboard')->name('dashboard');
-    Route::resource('incident', 'IncidentController');
+    
+
+    Route::post('report', 'FrontendController@report')->name('report.store');
+
+    Route::get('reported-cases', 'FrontendController@reportedCases')->name('report.cases');
+    Route::get('/report/{id}', 'FrontendController@singleReport')->name('report.show');
+
+    Route::get('/my-stat', 'FrontendController@userStat')->name('user.stat');
 
     Route::get('/user/edit/{id}', 'UserController@userRole')->name('user.edit');
 });
@@ -39,6 +47,7 @@ Route::group(['middleware' => ['auth', 'securityAgency']], function () {
     Route::resource('announcement', 'AnnouncementController');
     Route::resource('agency', 'AgencyController');
     Route::get('/users', 'UserController@users')->name('users');
+    Route::resource('incident', 'IncidentController');
 });
 
 
@@ -47,6 +56,7 @@ Route::group(['middleware' => ['auth', 'superAdmin']], function () {
     Route::resource('feedback', 'FeedbackController');
     Route::resource('announcement', 'AnnouncementController');
     Route::resource('agency', 'AgencyController');
+    Route::resource('incident', 'IncidentController');
 
     
 
