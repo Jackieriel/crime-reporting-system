@@ -7,6 +7,24 @@
 
             @endif
 
+            {{-- Reporter Links --}}
+            @if (Auth::check() && Auth::user()->is_reporter())
+                <li class="list-group-item">
+                    <a href="{{ route('home') }}">Report Incident</a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="{{ route('home') }}">My Reported Cases</a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="{{ route('home') }}">Manage Profile</a>
+                </li>
+
+            @endif
+
+             {{-- End reporter link --}}
+
             @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
                 <li class="list-group-item">
                     <a href="{{ route('crime-category.index') }}">Crime Categories</a>

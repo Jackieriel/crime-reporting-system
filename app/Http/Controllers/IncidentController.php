@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CrimeCategory;
 use App\Models\Incident;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -15,15 +16,25 @@ class IncidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //fetch 5 incidents from database which are active and latest
-        $incidents = Incident::orderBy('created_at', 'desc')->paginate(10);
-        $title = 'All Incidents';
+        $user = User::all();
 
-        return view('pages.admin.incident.index')
-            ->with('incidents', $incidents)
-            ->with('title', $title);
+        if ($user && ($request->user()->is_super_admin() ||
+            $request->user()->is_security_agency() ||
+            $request->user()->is_other_agency())) {
+            //fetch 5 incidents from database which are active and latest
+            $incidents = Incident::orderBy('created_at', 'desc')->paginate(10);
+            $title = 'All Incidents';
+
+            return view('pages.admin.incident.index')
+                ->with('incidents', $incidents)
+                ->with('title', $title);
+        } else {
+            Session::flash('error', 'Invalid Operation. You have not sufficient permissions');
+            return redirect('dashboard');
+        }
+       
     }
 
     /**
@@ -234,11 +245,11 @@ class IncidentController extends Controller
         // Save post
         $incident->save();
 
-         // Flash message
-         Session::flash('success', 'Reported Incident updated successfully!');
+        // Flash message
+        Session::flash('success', 'Reported Incident updated successfully!');
 
-         // redirect
-         return redirect()->route('incident.index');
+        // redirect
+        return redirect()->route('incident.index');
     }
 
     /**

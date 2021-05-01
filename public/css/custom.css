@@ -230,10 +230,14 @@ li.js-dropdown {
     /* padding: .35em; */
 }
 
-.js-table th,
-.js-table td {
+.js-table th {
     padding: 0.625em 0;
     text-align: center;
+}
+
+.js-table td {
+    padding: 0.625em 0.3em;
+    text-align: left;
 }
 
 .js-table th {
