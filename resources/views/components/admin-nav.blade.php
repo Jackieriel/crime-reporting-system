@@ -3,6 +3,9 @@
         {{ config('app.name', 'Laravel') }}
     </a>
     <ul class="js-nav-menu">
+        <li class="js-nav-item">
+            <a href="{{ route('news') }}" class="js-nav-link">News/Info</a>
+        </li>
         @guest
             <li class="js-nav-item">
                 <a href="{{ route('login') }}" class="js-nav-link">{{ __('Login') }}</a>
