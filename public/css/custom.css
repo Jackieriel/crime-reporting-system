@@ -3,8 +3,12 @@
     /* background-size: cover; */
     /* height: 100vh; */
     background: #062863;
-    /* opacity: 0.3; */
+    position: relative;
+    min-height: 100%;
+    top: 0 !important;
 }
+    /* opacity: 0.3; */
+
 /* 
 .front-bg img{
       opacity: 0.3;
@@ -40,7 +44,9 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 0.2rem 1.5rem;
+    /* padding: 1rem 1.5rem; */
+    background: #fff;
 }
 
 .js-hamburger {
@@ -126,7 +132,6 @@ a {
         /* padding-left: 50px; */
         /* padding-left: 2px; */
         color: #482ff7;
-        
     }
 
     .js-hamburger {
@@ -301,10 +306,28 @@ li.js-dropdown {
     .js-table td {
         padding: 0.625em;
     }
-
-   
 }
 
 .action .btn {
     display: inline;
 }
+
+/* Google translate */
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+.goog-te-gadget img {
+    display: none;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+/* end */

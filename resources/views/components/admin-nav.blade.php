@@ -4,6 +4,10 @@
     </a>
     <ul class="js-nav-menu">
         <li class="js-nav-item">
+
+            <a id="google_translate_element" class="js-nav-link"></a>
+        </li>
+        <li class="js-nav-item">
             <a href="{{ route('news') }}" class="js-nav-link">News/Info</a>
         </li>
         @guest
@@ -23,7 +27,7 @@
             <li class="js-nav-item ">
                 <span>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
+                                                                        document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
 
                     </a>

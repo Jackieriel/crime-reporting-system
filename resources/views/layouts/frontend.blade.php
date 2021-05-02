@@ -22,75 +22,31 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </head>
 <body class="front-bg">
+
+    {{-- <div id="google_translate_element" style="display: none;"></div> --}}
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ha,ig,fr',
+                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+
+            // jQuery('.goog-logo-link').css('display', 'none');
+            // jQuery('.goog-te-gadget').css('font-size', '0');
+        }
+
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+
     <div id="app">
-        <nav class="js-navbar" style="background: #fff">
-            <a href="{{ url('/') }}" class="js-nav-logo text-primary">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <ul class="js-nav-menu">
-                @guest
-                    <li class="js-nav-item">
-                        <a href="{{ route('login') }}" class="js-nav-link">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="js-nav-item">
-                            <a href="{{ route('register') }}" class="js-nav-link">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="js-nav-item">
-                        <a href="{{ route('incident.index') }}" class="js-nav-link">Incidents</a>
-                    </li>
-
-                    <li class="js-nav-item">
-                        <span class="online"></span><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();" class="js-nav-link">{{ Auth::user()->name }}</a>
-                        <span>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-
-                            </a>
-                        </span>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-
-
-                    {{-- <li class="js-nav-item js-dropdown">
-                        <a href="javascript:void(0)" class="js-nav-link js-dropbtn" onclick="myFunction()">
-                            {{ Auth::user()->name }} <span class="fa fa-sign-out"></span>
-                        </a>
-
-                        <div class="js-dropdown-content" id="myDropdown">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li> --}}
-
-                @endguest
-
-                <li class="js-nav-item show-menu">
-                    <a href="{{ route('news') }}" class="js-nav-link">News/Info</a>
-                </li>
-
-            </ul>
-            <div class="js-hamburger">
-                <span class="js-bar"></span>
-                <span class="js-bar"></span>
-                <span class="js-bar"></span>
-            </div>
-        </nav>
+       <x-user-nav />
         {{-- <div class="languages">
             @foreach(config()->get('app.locales') as $code => $lang)
                 <a href="http://{{$code}}.laravel.test">{{ $lang }}</a>

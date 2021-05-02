@@ -10,6 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -24,9 +25,44 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
+
+    {{-- Google translate --}}
+    {{-- <script src="http://cdn.howcode.org/content/static/javascript/jquery.cookie.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    {{-- <script src="http://cdn.howcode.org/content/static/javascript/jquery.cookie.js"></script> --}}
+
+
+
+
+    {{-- End Google translate --}}
 </head>
 
 <body>
+    <script type="text/javascript">
+        // $.cookie('googtrans', '/en/it');
+
+    </script>
+    {{-- <div id="google_translate_element" class="google-btn"></div> --}}
+    {{-- <div id="google_translate_element"></div> --}}
+
+    {{-- <div id="google_translate_element" style="display: none;"></div> --}}
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ha,ig,fr',
+                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+
+            // jQuery('.goog-logo-link').css('display', 'none');
+            // jQuery('.goog-te-gadget').css('font-size', '0');
+        }
+
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+
     <div id="app">
         {{-- Customer navbar --}}
         <div class="js-header">
