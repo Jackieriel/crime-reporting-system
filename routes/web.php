@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index')->name('index');
 
+Route::get('/news',  'FrontendController@news')->name('news');
+Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
+
 // Route::get('/', 'FrontendController@index')->name('index');
 
 
@@ -43,8 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/profile/{id}', 'FrontendController@Profile')->name('user.profile');
 
-    Route::get('/news',  'FrontendController@news')->name('news');
-    Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 });
 
 
