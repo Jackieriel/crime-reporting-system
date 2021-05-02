@@ -80,6 +80,10 @@
 
                 @endguest
 
+                <li class="js-nav-item show-menu">
+                    <a href="{{ route('news') }}" class="js-nav-link">News/Info</a>
+                </li>
+
             </ul>
             <div class="js-hamburger">
                 <span class="js-bar"></span>
