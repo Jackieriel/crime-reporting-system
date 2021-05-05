@@ -7,7 +7,7 @@
 @section('content')
     <div class="card">
         <div class="card-header text-center">
-            Report New Incident
+            Create Agency Profile
         </div>
         <i class="pl-3">Fields with * are compulsory</i>
         <div class="card-body">
