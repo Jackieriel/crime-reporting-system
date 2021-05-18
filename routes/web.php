@@ -28,7 +28,7 @@ Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'FrontendController@dashboard')->name('dashboard');
     Route::get('/report', 'FrontendController@reportCase')->name('report');
@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'securityAgency']], function () {
+Route::group(['middleware' => ['auth', 'securityAgency','verified']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
     Route::resource('announcement', 'AnnouncementController');
@@ -59,8 +59,8 @@ Route::group(['middleware' => ['auth', 'securityAgency']], function () {
 });
 
 
-// Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
-Route::group(['middleware' => ['auth', 'superAdmin']], function () {
+Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
+// Route::group(['middleware' => ['auth', 'superAdmin']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
     Route::resource('announcement', 'AnnouncementController');
@@ -82,7 +82,7 @@ Route::group(['middleware' => ['auth', 'superAdmin']], function () {
 
 });
 
-Route::group(['middleware' => ['auth', 'otherAgency']], function () {
+Route::group(['middleware' => ['auth', 'otherAgency', 'verified']], function () {
 //
 });
 
