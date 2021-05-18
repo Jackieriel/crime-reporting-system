@@ -59,8 +59,8 @@ Route::group(['middleware' => ['auth', 'securityAgency']], function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
 // Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'superAdmin']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
     Route::resource('announcement', 'AnnouncementController');

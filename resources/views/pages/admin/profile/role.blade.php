@@ -29,7 +29,7 @@
                     <label for="role">Role</label>
 
                     <select name="role" id="role" class="form-control">
-                        <option value="" selected disabled>Select Status</option>
+                        <option value="" selected disabled>Select Role</option>
                         <option value="superAdmin" @if ($user->role == 'superAdmin') selected @endif>{{ 'super Admin' }}</option>
                         <option value="securityAgency" @if ($user->role == 'securityAgency') selected @endif>{{ 'Security Agency' }}</option>
                         <option value="otherAgency" @if ($user->role == 'otherAgency') selected @endif>{{ 'Other Agency' }}</option>

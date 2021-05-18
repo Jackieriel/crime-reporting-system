@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-       
+
         <div class="card">
 
             <div class="card-header text-center">Users</div>
@@ -14,9 +14,9 @@
                 <table class="js-table">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>                           
+                            <th scope="col">Name</th>
                             <th scope="col">Registered On</th>
-                            @if (Auth::check() &&  Auth::user()->is_super_admin())
+                            @if (Auth::check() && Auth::user()->is_super_admin())
                                 <th colspan="2">Action</th>
 
                             @elseif(Auth::check() && Auth::user()->is_security_agency())
@@ -29,11 +29,12 @@
 
                             @foreach ($users as $user)
                                 <tr>
-                                    <td scope="row" data-label="Name">{{ $user->name }}</td>                                    
-                                    <td scope="row" data-label="Registered On">{{ $user->created_at->format('M d,Y \a\t h:i a') }}</td>
+                                    <td scope="row" data-label="Name">{{ $user->name }}</td>
+                                    <td scope="row" data-label="Registered On">
+                                        {{ $user->created_at->format('M d,Y \a\t h:i a') }}</td>
                                     {{-- <td>{{ $user->created_at->toFormattedDateString() }}</td> --}}
 
-                                    @if (Auth::check() &&  Auth::user()->is_super_admin())
+                                    @if (Auth::check() && Auth::user()->is_super_admin())
                                         <td>
                                             <a href="{{ route('user.show', $user->id) }}"
                                                 class="btn btn-xs btn-primary">View</a>
@@ -43,7 +44,7 @@
                                                 class="btn btn-xs btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                            {{-- <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                 {{ csrf_field() }}
 
                                                 {{ method_field('DELETE') }}
@@ -51,11 +52,15 @@
                                                 <button class="btn btn-xs btn-danger"
                                                     onclick="return confirm('Do you really want to delete this user?')"
                                                     type="submit">Delete</button>
-                                            </form>
-                                        </td>
+                                            </form> --}}
+
+                                            <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-xs btn-danger"
+                                                onclick="return confirm('Do you really want to delete this user?')" type="submit">Delete</a>
+                            
+                                            </td>
 
                                     @elseif(Auth::check() && Auth::user()->is_security_agency())
-                                        <td><a href="{{ route('user.show', $user->id) }}"
+                                            <td><a href=" {{ route('user.show', $user->id) }}"
                                                 class="btn btn-xs btn-primary">View</a>
                                         </td>
                                     @endif
