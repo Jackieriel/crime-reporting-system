@@ -83,6 +83,7 @@
     <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/echarts.min.js') }}"></script>
 
     <x-notifications />
 </body>

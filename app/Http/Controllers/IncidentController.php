@@ -34,7 +34,6 @@ class IncidentController extends Controller
             Session::flash('error', 'Invalid Operation. You have not sufficient permissions');
             return redirect('dashboard');
         }
-       
     }
 
     /**
@@ -279,4 +278,39 @@ class IncidentController extends Controller
         }
         return redirect('incident.index');
     }
+
+    public function crimeStats()
+    {
+        // $crime_categories =  CrimeCategory::with('incidents')->get();
+
+        // $title = 'Crime Statistics';
+        // return view('pages.admin.incident.stats')
+        //     ->with('title', $title)
+        //     ->with('crime_categories', $crime_categories);
+
+        $crime_categories =  CrimeCategory::with('incidents')->get();
+
+        $rape = Incident::with('crimecategory')->where('crime_category_id','1')->count();
+    	$rubbery = Incident::with('crimecategory')->where('crime_category_id','2')->count();
+        $assult = Incident::with('crimecategory')->where('crime_category_id','3')->count();
+        
+    
+        
+        $title = 'Crime Statistics';
+
+        return view('pages.admin.incident.stats')
+            ->with('title', $title)
+            ->with('rape', $rape)
+            ->with('rubbery', $rubbery)
+            ->with('crime_categories', $crime_categories)
+            ->with('assult', $assult);
+    	
+    }
+
+        // $title = 'Crime Statistics';
+        // return view('pages.admin.incident.stats')
+        //     ->with('title', $title)
+        //     ->with('rape', $rape);
+    
 }
+

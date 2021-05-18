@@ -50,6 +50,10 @@
                 </li>
 
                 <li class="list-group-item">
+                    <a href="{{ route('crime.stats') }}">Crime Statistics</a>
+                </li>
+
+                <li class="list-group-item">
                     <a href="{{ route('agency.index') }}">Agency</a>
                 </li>
             @endif

@@ -23,9 +23,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
-
+    <script src="{{ asset('js/echarts.min.js') }}"></script>
     {{-- Google translate --}}
     {{-- <script src="http://cdn.howcode.org/content/static/javascript/jquery.cookie.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -99,6 +100,7 @@
     <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    
 
     <x-notifications />
 </body>

@@ -60,6 +60,10 @@
                 </li>
 
                 <li class="js-nav-item show-menu">
+                    <a href="{{ route('crime.stats') }}" class="js-nav-link">{{ __('Crime Statistics') }}</a>
+                </li>
+
+                <li class="js-nav-item show-menu">
                     <a href="{{ route('agency.index') }}" class="js-nav-link">{{ __('Agency') }}</a>
                 </li>
             @endif

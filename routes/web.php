@@ -59,7 +59,8 @@ Route::group(['middleware' => ['auth', 'securityAgency']], function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'superAdmin']], function () {
+Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
+// Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
     Route::resource('crime-category', 'CrimeCategoryController');
     Route::resource('feedback', 'FeedbackController');
     Route::resource('announcement', 'AnnouncementController');
@@ -67,6 +68,8 @@ Route::group(['middleware' => ['auth', 'superAdmin']], function () {
     Route::resource('incident', 'IncidentController');
 
     
+
+    Route::get('/crime-stats', 'IncidentController@crimeStats')->name('crime.stats');
 
     Route::get('/users', 'UserController@users')->name('users');
     Route::get('/user/{id}', 'UserController@show')->name('user.show');
@@ -83,4 +86,4 @@ Route::group(['middleware' => ['auth', 'otherAgency']], function () {
 //
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
