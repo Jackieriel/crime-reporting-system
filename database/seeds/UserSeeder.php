@@ -14,10 +14,11 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' =>'Tessy',
-            'email' => 'tessy@tesscrsystem.com',
+            'email' => 'tesscrsystem@gmail.com',
+            'email_verified_at' =>Carbon::now()->format('Y-m-d H:i:s'),
             'password' => Hash::make('password'),
             'gender' => 'female',
-            'phone' => '08131327382',
+            'phone' => '08140800141',
             'role' => 'superAdmin',
             'photo' => 'uploads/profile/avater.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

@@ -11,6 +11,25 @@
 
             <div class="card-header text-center">Reported Crime incident</div>
             <div class="card-body">
+
+                {{-- Seach form --}}
+                <table class="js-table">
+                    <tbody>
+                        <tr>
+                            <td scope="row" data-label="Search">
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <br>
+
+
                 <table class="js-table">
                     <thead>
                         <tr>
@@ -33,9 +52,11 @@
                             @foreach ($incidents as $incident)
                                 <tr>
                                     <td scope="row" data-label="Reporter">{{ $incident->reporter->name }}</td>
-                                    <td class="text-capitalize" scope="row" data-label="Crime Category">{{ $incident->crimecategory->category_name }}</td>
+                                    <td class="text-capitalize" scope="row" data-label="Crime Category">
+                                        {{ $incident->crimecategory->category_name }}</td>
                                     {{-- <td>{!! Str::substr($incident->description, 0, 20) !!}</td> --}}
-                                    <td scope="row" data-label="Date Reported">{{ $incident->created_at->format('M d,Y \a\t h:i a') }}</td>
+                                    <td scope="row" data-label="Date Reported">
+                                        {{ $incident->created_at->format('M d,Y \a\t h:i a') }}</td>
                                     {{-- <td>{{ $incident->created_at->toFormattedDateString() }}</td> --}}
 
                                     @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
