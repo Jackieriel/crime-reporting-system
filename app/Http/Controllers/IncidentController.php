@@ -279,38 +279,27 @@ class IncidentController extends Controller
         return redirect('incident.index');
     }
 
+
+
     public function crimeStats()
     {
-        // $crime_categories =  CrimeCategory::with('incidents')->get();
 
-        // $title = 'Crime Statistics';
-        // return view('pages.admin.incident.stats')
-        //     ->with('title', $title)
-        //     ->with('crime_categories', $crime_categories);
+        $categories = CrimeCategory::with('incidents')->get();
 
-        $crime_categories =  CrimeCategory::with('incidents')->get();
+        $var = [];
+        $var2 = [];
+        foreach ($categories as $crimes) {
+            $var[] = $crimes->category_name;
+            $var2[] = $crimes->incidents->count();
+        };
 
-        $rape = Incident::with('crimecategory')->where('crime_category_id','1')->count();
-    	$rubbery = Incident::with('crimecategory')->where('crime_category_id','2')->count();
-        $assult = Incident::with('crimecategory')->where('crime_category_id','3')->count();
-        
-    
-        
         $title = 'Crime Statistics';
 
         return view('pages.admin.incident.stats')
             ->with('title', $title)
-            ->with('rape', $rape)
-            ->with('rubbery', $rubbery)
-            ->with('crime_categories', $crime_categories)
-            ->with('assult', $assult);
-    	
+
+            ->with('categories', $categories)
+            ->with('var', $var)
+            ->with('var2', $var2);
     }
-
-        // $title = 'Crime Statistics';
-        // return view('pages.admin.incident.stats')
-        //     ->with('title', $title)
-        //     ->with('rape', $rape);
-    
 }
-

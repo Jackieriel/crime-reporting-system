@@ -18,8 +18,8 @@
 
                 <div class="form-group">
                     <label for="name"><span class="text-danger">*</span>Phone</label>
-                    <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required placeholder="Contact Phone"
-                        value="{{ old('phone') }}">
+                    <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required
+                        placeholder="Contact Phone" value="{{ old('phone') }}">
                 </div>
 
                 <div class="form-group">
@@ -35,7 +35,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category"><span class="text-danger">*</span>Crime Category</label>
+                    <label for="category"><span class="text-danger">*</span>Crime Category (<span><a href="{{route('crime.types')}}">Click for info
+                                on crime category</a></span>)</label>
                     <select name="crime_category_id" id="crime_category" class="form-control">
                         <option value="" selected disabled>Select a category</option>
                         @foreach ($categories as $category)
@@ -47,8 +48,8 @@
                 <div class="form-group">
                     <label for="description"><span class="text-danger">*</span>Description/Statement</label>
 
-                    <textarea name="description" id="description" cols="30" rows="10" 
-                    class="form-control">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" cols="30" rows="10"
+                        class="form-control">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group">

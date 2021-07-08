@@ -18,9 +18,15 @@
 
                 <div class="form-group">
                     <label for="name"><span class="text-danger">*</span>Phone</label>
-                    <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required placeholder="Contact Phone"
+                    <input type="tel" name="phone" id="phone" class="form-control" required placeholder="Contact Phone"
                         value="{{ old('phone') }}">
                 </div>
+
+                {{-- <div class="form-group">
+                    <label for="name"><span class="text-danger">*</span>Phone</label>
+                    <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required placeholder="Contact Phone"
+                        value="{{ old('phone') }}">
+                </div> --}}
 
                 <div class="form-group">
                     <label for="lga"><span class="text-danger">*</span>Incident Location (LGA)</label>

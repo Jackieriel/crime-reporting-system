@@ -24,10 +24,11 @@ Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/news',  'FrontendController@news')->name('news');
 Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 
-// Route::get('/', 'FrontendController@index')->name('index');
+Route::get('/crime-types', 'FrontendController@typeOfCrimes')->name('crime.types');
 
 
 
+// Normal user
 Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'FrontendController@dashboard')->name('dashboard');

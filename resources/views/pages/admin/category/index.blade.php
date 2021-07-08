@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{ route('crime-category.create') }}" class="btn btn-primary">Add Crime Category</a>
+        {{-- <a href="{{ route('crime-category.create') }}" class="btn btn-primary">Add Crime Category</a> --}}
         <div class="card">
 
             <div class="card-header text-center">Crime category</div>
@@ -24,10 +24,10 @@
                                 <tr>
                                     <td scope="row" data-label="Category">{{ $category->category_name }}</td>
 
-                                    <td><a href="{{ route('crime-category.edit', $category->id) }}"
+                                    <td class="text-center"><a href="{{ route('crime-category.edit', $category->id) }}"
                                             class="btn btn-xs btn-primary">Edit</a>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <form action="{{ route('crime-category.destroy', $category->id) }}" method="POST">
                                             {{ csrf_field() }}
 

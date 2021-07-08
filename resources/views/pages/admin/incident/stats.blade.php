@@ -25,7 +25,32 @@
         </div>
     </div>
 
+
+    {{-- @foreach ($categories as $category)
+        @php
+            $cat = $category->category_name 
+        @endphp
+        <ul>
+            <li>
+                {{ $cat}} : 
+                {{ $category->incidents->count() }}
+            </li>
+        </ul>
+
+
+
+    @endforeach --}}
+
+    {{-- {{ $var }} --}}
+
     <script type="text/javascript">
+    // var app = @json($var);
+    var app = @json($var);
+    var app2 = @json($var2);
+   
+    // document.write(app);
+
+
         var bars_basic_element = document.getElementById('bars_basic');
         if (bars_basic_element) {
             var bars_basic = echarts.init(bars_basic_element);
@@ -45,9 +70,9 @@
                 },
                 xAxis: [{
                     type: 'category',
-                    data: [@foreach ($crime_categories as $category)
-         {{ $category->category_name }}
-    @endforeach],
+                    data: [
+                      app
+                    ],
                     axisTick: {
                         alignWithLabel: true
                     }
@@ -56,18 +81,18 @@
                     type: 'value'
                 }],
                 series: [{
-                    name: 'Total Products',
+                    name: 'Total Crime Incident',
                     type: 'bar',
                     barWidth: '20%',
                     data: [
-                        
+                        app2
                     ]
                 }]
             });
         }
 
     </script>
-{{ $rape }},
-{{ $rubbery }},
-{{ $assult }}
+    {{-- {{ $arson_fires }}, --}}
+
+
 @endsection

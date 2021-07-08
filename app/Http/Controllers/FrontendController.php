@@ -271,14 +271,14 @@ class FrontendController extends Controller
 
     public function news()
     {
-         //fetch 5 incidents from database which are active and latest
-         $announcements = Announcement::orderBy('created_at', 'desc')->paginate(10);
+        //fetch 5 incidents from database which are active and latest
+        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(10);
 
-         $title = 'News/Announcement';
- 
-         return view('pages.frontend.news')
-             ->with('announcements', $announcements)
-             ->with('title', $title);
+        $title = 'News/Announcement';
+
+        return view('pages.frontend.news')
+            ->with('announcements', $announcements)
+            ->with('title', $title);
     }
 
     public function singleNews($id)
@@ -298,5 +298,14 @@ class FrontendController extends Controller
         return view('pages.frontend.single-news')
             ->with('announcement', $announcement)
             ->with('title', $title);
+    }
+
+
+    public function typeOfCrimes()
+    {
+
+        $title = 'Types of Crime';
+
+        return view('pages.frontend.crime-categories')->with('title', $title);
     }
 }

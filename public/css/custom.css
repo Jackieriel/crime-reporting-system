@@ -331,3 +331,9 @@ li.js-dropdown {
 }
 
 /* end */
+
+.crimes li{
+    list-style:decimal;
+    text-align: justify;
+    margin-bottom: 1.2rem;
+}
