@@ -13,12 +13,13 @@
         <div class="card-body">
             <x-errors />
 
-            <form action="{{ route('incident.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label for="name"><span class="text-danger">*</span>Phone</label>
-                    <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required
+                    <input type="tel" name="phone" id="phone" class="form-control" required
+                    {{-- <input type="text" name="phone" pattern="^[0-9]*$" id="phone" class="form-control" required --}}
                         placeholder="Contact Phone" value="{{ old('phone') }}">
                 </div>
 

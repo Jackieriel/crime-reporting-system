@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{ route('incident.create') }}" class="btn btn-primary">Report Crime incident</a>
+        <a href="{{ route('report') }}" class="btn btn-primary">Report Crime incident</a>
         <div class="card">
 
             <div class="card-header text-center">Reported Crime incident</div>

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Mail;
 
 class FrontendController extends Controller
 {
@@ -58,7 +59,7 @@ class FrontendController extends Controller
             'lga' => 'required',
             'address' => 'required',
             'description' => 'required',
-            'photo' => 'image |  | mimes:jpeg,png,jpg,gif| sometimes',
+            'photo' => 'image | mimes:jpeg,png,jpg,gif| sometimes',
             'video' => 'video | sometimes',
 
         ]);
@@ -86,8 +87,6 @@ class FrontendController extends Controller
             // $video = 'uploads/evidence/video' . $video_new_name;
         }
 
-
-        // ddd(request()->all());
 
         // Save the rest of the content
 
@@ -140,6 +139,19 @@ class FrontendController extends Controller
             ]);
         }
 
+        $data = ['name' => $request->name,];
+
+        // Send email to the admin
+
+        Mail::send(
+            'pages.frontend.report-email',
+            $data,
+
+            function ($sendEmail) use ($request) {
+                $sendEmail->from('reports@tesscrystem.com', 'TessCRSystem');
+                $sendEmail->to('tesscrsystem@gmail.com', 'Hello Officer')->subject('Crime Incident Report');
+            }
+        );
 
 
         // flash message to session
