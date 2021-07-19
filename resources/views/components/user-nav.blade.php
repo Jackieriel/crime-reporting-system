@@ -9,6 +9,10 @@
             <a id="google_translate_element" class="js-nav-link"></a>
         </li>
         @guest
+        <li class="js-nav-item">
+            <a href="{{ route('news') }}" class="js-nav-link">{{ __('News/Info') }}</a>
+        </li>
+
             <li class="js-nav-item">
                 <a href="{{ route('login') }}" class="js-nav-link">{{ __('Login') }}</a>
             </li>

@@ -5,7 +5,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            {{-- <h2 class="text-center p-3 font-weight-bold text-white">TessCRSystem</h2> --}}
+            {{-- <div class="text-center p-3 font-weight-bold text-white"> --}}
+            <div class="logo-image text-center font-weight-bold text-white mx-auto">
+                <img src="{{asset('images/tesscrime.png')}}" alt="">
+            </div>
             <div class="card">
                 <div class="card-header text-center text-uppercase"><i class="fa fa-user"></i>  {{ __('Login') }}</div>
 

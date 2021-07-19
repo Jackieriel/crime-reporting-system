@@ -337,3 +337,13 @@ li.js-dropdown {
     text-align: justify;
     margin-bottom: 1.2rem;
 }
+
+.logo-image{
+    max-width: 200px;
+    /* background: #fff; */
+    border-radius: 50%;
+}
+
+.logo-image img{
+    width: 100%;
+}
