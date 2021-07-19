@@ -138,8 +138,8 @@ class FrontendController extends Controller
 
             ]);
         }
-
-        $data = ['name' => $request->name,];
+        
+        $data = ['name' => Auth::user()->name,];
 
         // Send email to the admin
 

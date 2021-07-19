@@ -44,7 +44,7 @@
     {{-- {{ $var }} --}}
 
     <script type="text/javascript">
-    // var app = @json($var);
+    
     var app = @json($var);
     var app2 = @json($var2);
    
@@ -63,8 +63,8 @@
                     }
                 },
                 grid: {
-                    left: '3%',
-                    right: '4%',
+                    // left: '3%',
+                    // right: '4%',
                     bottom: '3%',
                     containLabel: true
                 },
@@ -83,7 +83,8 @@
                 series: [{
                     name: 'Total Crime Incident',
                     type: 'bar',
-                    barWidth: '20%',
+                    barWidth: '5%',
+                    // barWidth: '20%',
                     data: [
                         app2
                     ]
@@ -92,7 +93,14 @@
         }
 
     </script>
-    {{-- {{ $arson_fires }}, --}}
+    
+<span class="rotate">TESTING</span>
 
+<style>
+    .rotate{
+        transform: rotateY(130deg);
+        color:blueviolet;
+    }
+</style>
 
 @endsection

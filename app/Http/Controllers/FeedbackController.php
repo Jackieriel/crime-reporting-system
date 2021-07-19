@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feedback;
+use App\Models\Incident;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Mail;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
@@ -41,21 +45,39 @@ class FeedbackController extends Controller
             'on_incident' => 'required',
 
         ]);
-        
+
         $feedback = Feedback::create([
             'from_user' => $request->user()->id,
             'on_incident' => $request->on_incident,
-            'body'=> $request->body,
-        ]);
-        
-        
-        
+            'body' => $request->body,
+        ]);        
+
+        $data = [            
+            'name' => $request->name,            
+            'email' => $request->email,            
+            // 'name' => Auth::user()->name,
+            
+        ];        
+
+        // Send email to the admin
+
+        Mail::send(
+            'pages.frontend.feedback-email',
+            $data,
+
+            function ($sendEmail) use ($request) {
+                $sendEmail->from('reports@tesscrystem.com', 'TessCRSystem');
+                $sendEmail->to($request->email, 'Hello '. $request->name)->subject('Crime Incident Report Feedback');
+            }
+        );
+
+
+
         // flash message to session
         Session::flash('success', 'Remark added successfully!');
 
         // Redirect on success
         return redirect()->back();
-        
     }
 
     /**

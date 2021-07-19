@@ -1,6 +1,7 @@
 <nav class="js-navbar">
     <a href="{{ url('/') }}" class="js-nav-logo text-primary">
-        {{ config('app.name', 'Laravel') }}
+        {{ config(__('app.name'), 'TessCRSystem ') }}
+        {{-- {{ __('TessCRSystem')}} --}}
     </a>
     <ul class="js-nav-menu">
         <li class="js-nav-item">

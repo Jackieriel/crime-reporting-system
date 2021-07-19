@@ -33,6 +33,10 @@
 
                 <div class="col-md-12">
                     <ul class="list-group">
+                        <li class="list-group-item text-justify"><span class="text-primary">Reporter Phone:
+                        </span><br>
+                        {{ $incident->reporter->phone }}</li>
+
                         <li class="list-group-item text-capitalize"><span class="text-primary">Crime Category:
                             </span>{{ $incident->crimecategory->category_name }}</li>
 
@@ -77,6 +81,8 @@
                             @endif
 
                         </li>
+
+                    
                     </ul>
 
                 </div>
@@ -92,6 +98,8 @@
                                 {{ csrf_field() }}
 
                                 <input type="hidden" name="on_incident" value="{{ $incident->id }}">
+                                <input type="hidden" name="name" value="{{ $incident->reporter->name }}">
+                                <input type="hidden" name="email" value="{{ $incident->reporter->email }}">
 
                                 <div class="form-group">
                                     <textarea required="required" placeholder="Enter remark here" name="body"
