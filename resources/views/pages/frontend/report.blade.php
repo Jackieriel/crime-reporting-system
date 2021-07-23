@@ -41,7 +41,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category"><span class="text-danger">*</span>Crime Category</label>
+                    <label for="category"><span class="text-danger">*</span>Crime Category 
+                        <a href="{{route('crime.types')}}" class="badge badge-info">More about crime category</a>
+                    </label>
                     <select name="crime_category_id" id="crime_category" class="form-control">
                         <option value="" selected disabled>Select a category</option>
                         @foreach ($categories as $category)

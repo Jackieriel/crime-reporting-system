@@ -286,20 +286,13 @@ class IncidentController extends Controller
 
         $categories = CrimeCategory::with('incidents')->get();
 
-        $var = [];
-        $var2 = [];
-        foreach ($categories as $crimes) {
-            $var[] = $crimes->category_name;
-            $var2[] = $crimes->incidents->count();
-        };
+
 
         $title = 'Crime Statistics';
 
         return view('pages.admin.incident.stats')
             ->with('title', $title)
 
-            ->with('categories', $categories)
-            ->with('var', $var)
-            ->with('var2', $var2);
+            ->with('categories', $categories);
     }
 }
