@@ -68,11 +68,86 @@
                 </div>
             </div>
         @endif
+        <p></p>
+
+        {{-- Recent reported case --}}
+
+        <div class="card">
+            <div class="row m-0">
+                <div class="col-md-12">
+                    <h4 class="text-center p-2">Recent Reported Cases</h4>
+
+
+                    <table class="js-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Reporter</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Reported Date</th>
+                                @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
+                                    <th>Action</th>
+
+                                @elseif(Auth::check() && Auth::user()->is_other_agency())
+                                    <th scope="col">Details</th>
+                                @endif
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($incidents->count() > 0)
+
+                                @foreach ($incidents as $incident)
+                                    <tr>
+                                        <td scope="row" data-label="Reporter">{{ $incident->reporter->name }}</td>
+                                        <td class="text-capitalize text-center" scope="row" data-label="Crime Category">
+                                            {{ $incident->crimecategory->category_name }}</td>
+                                        {{-- <td>{!! Str::substr($incident->description, 0, 20) !!}</td> --}}
+                                        <td scope="row" data-label="Date Reported">
+                                            {{ $incident->created_at->format('M d,Y \a\t h:i a') }}</td>
+                                        {{-- <td>{{ $incident->created_at->toFormattedDateString() }}</td> --}}
+
+                                        @if (Auth::check() && (Auth::user()->is_security_agency() || Auth::user()->is_super_admin()))
+                                            <td class="text-center">
+                                                <a href="{{ route('incident.show', $incident->id) }}"
+                                                    class="btn btn-xs btn-primary">View</a>
+                                            </td>                                            
+
+                                        @elseif(Auth::check() && Auth::user()->is_other_agency())
+                                            <td><a href="{{ route('incident.show', $incident->id) }}"
+                                                    class="btn btn-xs btn-primary">View</a>
+                                            </td>
+                                        @endif
+
+                                    </tr>
+                                @endforeach
+
+                            @else
+                                <tr>
+                                    <td colspan="5" class="text-center">No Crime incident yet</td>
+                                </tr>
+                            @endif
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
 
     </div>
 
 
-@endsection
 
-{{-- Total Crimes Solved
-Total Police Officer --}}
+
+
+
+@endsection
