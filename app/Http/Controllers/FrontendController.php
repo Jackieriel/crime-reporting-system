@@ -27,9 +27,16 @@ class FrontendController extends Controller
     {
         $title = 'Dashboard';
 
+        $user = User::all();
+        $Incidents = Incident::where('reporter_id', Auth::user()->id)            
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
 
         return view('pages.frontend.dashboard')
             ->with('title', $title)
+            ->with('incidents', $Incidents)
             ->with('total_reported_case', Incident::where('reporter_id', Auth::user()->id)->count())
             ->with('total_case_open', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation openned')->count())
             ->with('total_case_close', Incident::where('reporter_id', Auth::user()->id)->where('status', 'verified - investigation closed')->count())
@@ -138,7 +145,7 @@ class FrontendController extends Controller
 
             ]);
         }
-        
+
         $data = ['name' => Auth::user()->name,];
 
         // Send email to the admin
