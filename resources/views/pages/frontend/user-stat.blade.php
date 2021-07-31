@@ -9,7 +9,6 @@
     <div class="container">
         <div class="card">
             <div class="card-header text-center text-uppercase">Statistics</div>
-
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -24,22 +23,22 @@
                                 <div class="card card-heading bg-primary text-white text-uppercase">
                                     Total Crimes Reported
                                 </div>
-                                
+
                                 <div class="card card-body">
                                     <h1>{{ $total_reported_case }}</h1>
                                 </div>
-                                
+
                             </div>
 
                             <div class="col-md-3 card card-header  text-center">
                                 <div class="card card-heading bg-primary text-white text-uppercase">
                                     Total Pending Verification
                                 </div>
-                                
+
                                 <div class="card card-body">
                                     <h1>{{ $total_case_pending }}</h1>
                                 </div>
-                                
+
                             </div>
 
 
@@ -71,5 +70,6 @@
             </div>
         </div>
     </div>
+
 
 @endsection

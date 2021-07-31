@@ -26,8 +26,6 @@ Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 
 Route::get('/crime-types', 'FrontendController@typeOfCrimes')->name('crime.types');
 
-Route::get('/chart-view', 'FrontendController@statsChart')->name('stats.chart');
-
 
 
 // Normal user
@@ -73,6 +71,9 @@ Route::group(['middleware' => ['auth', 'superAdmin', 'verified']], function () {
     
 
     Route::get('/crime-stats', 'IncidentController@crimeStats')->name('crime.stats');
+
+    // Route::get('/chart-view', 'FrontendController@statsChart')->name('stats.chart');
+
 
     Route::get('/users', 'UserController@users')->name('users');
     Route::get('/user/{id}', 'UserController@show')->name('user.show');

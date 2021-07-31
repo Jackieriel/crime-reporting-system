@@ -350,8 +350,8 @@ class FrontendController extends Controller
 
         $chart->labels($var);
         $chart->dataset('Total Reported Incident', 'bar', $var2)
-            ->color("rgb(255, 99, 132)")
-            ->backgroundcolor("rgb(255, 99, 132)");
+            ->color("#3490dc")
+            ->backgroundcolor("#3490dc");
 
         return view('pages.frontend.chartview')
             ->with('chart', $chart)            

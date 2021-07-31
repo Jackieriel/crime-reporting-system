@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use App\Charts\CrimeStat;
 
 class IncidentController extends Controller
 {
@@ -284,15 +285,36 @@ class IncidentController extends Controller
     public function crimeStats()
     {
 
-        $categories = CrimeCategory::with('incidents')->get();
-
-
 
         $title = 'Crime Statistics';
 
-        return view('pages.admin.incident.stats')
-            ->with('title', $title)
 
-            ->with('categories', $categories);
+        // $categories = CrimeCategory::with('incidents')->pluck('category_name');
+
+
+        $categories = CrimeCategory::with('incidents')->get();
+
+        $var = [];
+        $var2 = [];
+        foreach ($categories as $crimes) {
+            $var[] = $crimes->category_name;
+            $var2[] = $crimes->incidents->count();
+        };
+
+        // new instant of crime stat
+        $chart = new CrimeStat;
+
+        $chart->labels($var);
+        $chart->dataset('Total Reported Incident', 'bar', $var2)
+            ->color("#3490dc")
+            ->backgroundcolor("#3490dc");
+
+        return view('pages.frontend.chartview')
+            ->with('chart', $chart)
+            ->with('title', $title)
+            ->with('category_count', CrimeCategory::all()->count())
+            ->with('total_reported_case', Incident::all()->count())
+            ->with('total_case_open', Incident::where('status', 'verified - investigation openned')->count())
+            ->with('total_case_close', Incident::where('status', 'verified - investigation closed')->count());
     }
 }
