@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Mail;
+use App\Charts\CrimeStat;
+
 
 class FrontendController extends Controller
 {
@@ -28,7 +30,7 @@ class FrontendController extends Controller
         $title = 'Dashboard';
 
         $user = User::all();
-        $Incidents = Incident::where('reporter_id', Auth::user()->id)            
+        $Incidents = Incident::where('reporter_id', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
@@ -326,5 +328,33 @@ class FrontendController extends Controller
         $title = 'Types of Crime';
 
         return view('pages.frontend.crime-categories')->with('title', $title);
+    }
+
+    public function statsChart()
+    {
+
+        // $categories = CrimeCategory::with('incidents')->pluck('category_name');
+ 
+
+        $categories = CrimeCategory::with('incidents')->get();
+
+        $var = [];
+        $var2 = [];
+        foreach ($categories as $crimes) {
+            $var[] = $crimes->category_name;
+            $var2[] = $crimes->incidents->count();
+        };
+
+        // new instant of crime stat
+        $chart = new CrimeStat;
+
+        $chart->labels($var);
+        $chart->dataset('Total Reported Incident', 'bar', $var2)
+            ->color("rgb(255, 99, 132)")
+            ->backgroundcolor("rgb(255, 99, 132)");
+
+        return view('pages.frontend.chartview')
+            ->with('chart', $chart)            
+        ;
     }
 }

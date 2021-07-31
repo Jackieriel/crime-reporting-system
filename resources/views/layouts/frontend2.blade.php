@@ -26,37 +26,19 @@
     <link href="{{ asset('css/components.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/echarts.min.js') }}"></script>
-    {{-- Google translate --}}
-    {{-- <script src="http://cdn.howcode.org/content/static/javascript/jquery.cookie.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    {{-- <script src="http://cdn.howcode.org/content/static/javascript/jquery.cookie.js"></script> --}}
 
-
-
-
-    {{-- End Google translate --}}
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
+    
 </head>
 
 <body>
-    <script type="text/javascript">
-        // $.cookie('googtrans', '/en/it');
 
-    </script>
-    {{-- <div id="google_translate_element" class="google-btn"></div> --}}
-    {{-- <div id="google_translate_element"></div> --}}
-
-    {{-- <div id="google_translate_element" style="display: none;"></div> --}}
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'en,ha,ig,fr',
-                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                includedLanguages: 'en,ha,ig,fr',                
             }, 'google_translate_element');
-
-            // jQuery('.goog-logo-link').css('display', 'none');
-            // jQuery('.goog-te-gadget').css('font-size', '0');
         }
 
     </script>
@@ -70,11 +52,6 @@
             <x-user-nav />
         </div>
 
-
-        {{-- <main class="py-4">
-            @yield('content')
-        </main> --}}
-
         <div class="container py-4 navbar-space">
             <div class="row">
                 {{-- @if (Auth::check() && Auth::user()->role) --}}
@@ -86,11 +63,6 @@
                 <div class="col-md-4">
                     <x-sidebar />
                 </div>
-                {{-- @else
-                    <div class="col-md-12">
-                        @yield('content')
-                    </div>
-                @endif --}}
 
 
             </div>
