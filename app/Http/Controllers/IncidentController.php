@@ -317,4 +317,24 @@ class IncidentController extends Controller
             ->with('total_case_open', Incident::where('status', 'verified - investigation openned')->count())
             ->with('total_case_close', Incident::where('status', 'verified - investigation closed')->count());
     }
+
+
+    // search incidents
+
+    public function searchIncident()
+    {
+        // $title = "Search Result";
+
+        $incidents = Incident::where('address', 'like', '%' . request('search') . '%')
+            ->orWhere('lga', 'like', '%' . request('search') . '%')        
+            // ->orWhere($incidents->repoter->name, 'like', '%' . request('search') . '%')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);;
+        
+            
+
+        return view('pages.admin.incident.result')
+            ->with('incidents', $incidents)
+            ->with('title', 'Search results  for: ' . request('search'));
+    }
 }

@@ -26,6 +26,8 @@ Route::get('/news/{id}',  'FrontendController@singleNews')->name('news.show');
 
 Route::get('/crime-types', 'FrontendController@typeOfCrimes')->name('crime.types');
 
+Route::get('/incidents-results', 'IncidentController@searchIncident')->name('incident.search');
+
 
 
 // Normal user
