@@ -75,7 +75,7 @@
         <div class="card">
             <div class="row m-0">
                 <div class="col-md-12">
-                    <h4 class="text-center p-2">Recent Reported Cases</h4>
+                    <h4 class="text-center p-2">Recent Reported Cases Pending verification</h4>
 
 
                     <table class="js-table">

@@ -84,7 +84,7 @@
         <p></p>
         <div class="card-body">
             <div class="card-header text-center">
-                <h4>My Recent Reported Cases</h4>
+                <h4>My Recent Reported Cases Pending verification</h4>
             </div>
             <table class="js-table">
                 <thead>

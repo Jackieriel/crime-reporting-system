@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+s
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <script src="https://kit.fontawesome.com/db163c922e.js" crossorigin="anonymous"></script>
 
@@ -20,10 +20,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('toastr/toastr.min.css') }}" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </head>
@@ -80,10 +80,10 @@
         </div>
     </div>
 
-    <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/echarts.min.js') }}"></script>
+    <script src="{{ secure_asset('toastr/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ secure_asset('toastr/toastr.min.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('js/echarts.min.js') }}"></script>
 
     <x-notifications />
 </body>
