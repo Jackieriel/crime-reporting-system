@@ -12,7 +12,7 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <script src="https://kit.fontawesome.com/db163c922e.js" crossorigin="anonymous"></script>
 
@@ -21,13 +21,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/components.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/components.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('toastr/toastr.min.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/Chart.min.js') }}"></script>
+    <script src="{{ secure_asset('js/Chart.min.js') }}"></script>
     
 </head>
 
@@ -69,9 +69,9 @@
         </div>
     </div>
 
-    <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('toastr/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ secure_asset('toastr/toastr.min.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
     
 
     <x-notifications />
