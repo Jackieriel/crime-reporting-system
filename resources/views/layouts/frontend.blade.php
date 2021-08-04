@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'TessCrimeRS') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,10 +18,10 @@
     <script src="https://kit.fontawesome.com/db163c922e.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('toastr/toastr.min.css') }}" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </head>
@@ -58,9 +58,9 @@
         </main>
     </div>
 
-    <script src="{{ asset('toastr/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('toastr/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ secure_asset('toastr/toastr.min.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
 
 
     <x-notifications />
