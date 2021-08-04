@@ -277,7 +277,7 @@ class IncidentController extends Controller
         } else {
             Session::flash('error', 'Invalid Operation. You have not sufficient permissions');
         }
-        return redirect('incident.index');
+        return redirect()->route('incident.index');
     }
 
 
