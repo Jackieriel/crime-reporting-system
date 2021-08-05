@@ -69,6 +69,39 @@
         </div>
     </div>
 
+
+    <!-- Loader -->
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+
+  <!-- end loader -->
+
+  <script>
+    // Loader
+
+    document.onreadystatechange = function () {
+      if (document.readyState !== "complete") {
+        document.querySelector(
+          "#app").style.visibility = "hidden";
+        document.querySelector(
+          "#loader-wrapper").style.visibility = "visible";
+      } else {
+        document.querySelector(
+          "#loader-wrapper").style.display = "none";
+        document.querySelector(
+          "#app").style.visibility = "visible";
+      }
+    };
+
+
+
+// Loader
+  </script>
+  
+
     <script src="{{ secure_asset('toastr/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ secure_asset('toastr/toastr.min.js') }}"></script>
     <script src="{{ secure_asset('js/main.js') }}"></script>
